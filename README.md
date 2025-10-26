@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Roya Core - Privy Authentication Demo
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- Yarn, npm, or pnpm
+- A Privy account ([Sign up here](https://dashboard.privy.io/))
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repo-url>
+cd roya-core
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+yarn install
+# or
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables:
+```bash
+cp .env.example .env
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Add your Privy credentials to `.env`:
+   - Get your `NEXT_PUBLIC_PRIVY_APP_ID` and `PRIVY_APP_SECRET` from [Privy Dashboard](https://dashboard.privy.io/)
+   - Update the `.env` file with your credentials
 
-## Learn More
+5. Run the development server:
+```bash
+yarn dev
+# or
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+6. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Environment Variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+See `.env.example` for all available environment variables:
 
-## Deploy on Vercel
+- `NEXT_PUBLIC_PRIVY_APP_ID`: Your Privy App ID (required)
+- `PRIVY_APP_SECRET`: Your Privy App Secret (required)
+- `NEXT_PUBLIC_SUPPORTED_CHAINS`: Comma-separated list of chains (optional)
+- `NEXT_PUBLIC_DEFAULT_CHAIN`: Default blockchain network (optional)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+├── app/
+│   ├── api/
+│   │   ├── auth/token/      # Token management endpoint
+│   │   ├── protected/        # Protected API routes
+│   │   └── user/            # User profile API
+│   ├── components/
+│   │   └── LoginButton.tsx  # Authentication UI
+│   ├── dashboard/           # Protected dashboard page
+│   └── providers.tsx         # Privy provider setup
+├── lib/
+│   ├── auth.ts              # Server-side auth utilities
+│   └── privy-server.ts      # Privy server client
+└── middleware.ts             # Route protection middleware
+```
