@@ -1,7 +1,7 @@
 import PredictionFeed from "@/components/PredictionFeed";
 import BottomNav from "@/components/BottomNav";
 
-export default function DashboardPage() {
+export default function FeedPage() {
   return (
     <div className="w-full h-screen overflow-hidden">
       <PredictionFeed />
@@ -9,3 +9,4 @@ export default function DashboardPage() {
     </div>
   );
 }
+
